@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AyurSphere - My Favorites</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="favorites.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <img src="images/logo-final.png" alt="AyurSphere Logo">
+            </div>
+            <h1 class="site-title">
+                AyurSphere
+            </h1>
+        </div>
+        
+        <div class="header-center">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search in favorites...">
+            </div>
+        </div>
+        
+        <div class="header-right">
+            <div class="header-actions">
+                <a href="favorites.html" class="favorites-counter" title="View Favorites" style="display: none;">
+                    <i class="fas fa-heart"></i>
+                    <span class="favorites-count" id="favoritesCount">0</span>
+                </a>
+                <div class="user-menu">
+                    <span class="username" id="usernameDisplay">Demo User</span>
+                    <button class="logout-btn" id="logoutBtn">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3><i class="fas fa-book"></i> My Library</h3>
+                <ul class="menu-list">
+                    <li>
+                        <a href="dashboard.html" style="text-decoration: none; color: inherit;">
+                            <i class="fas fa-spa"></i> Browse All Plants
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="favorites.html" style="text-decoration: none; color: inherit;">
+                            <i class="fas fa-heart"></i> My Favorites
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="text-decoration: none; color: inherit;">
+                            <i class="fas fa-bookmark"></i> Study Collections
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="text-decoration: none; color: inherit;">
+                            <i class="fas fa-map-marker-alt"></i> Virtual Garden
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Categories</h3>
+                <ul class="category-list">
+                    <li><i class="fas fa-seedling"></i> Roots & Rhizomes</li>
+                    <li><i class="fas fa-leaf"></i> Leaves & Herbs</li>
+                    <li><i class="fas fa-spa"></i> Flowers & Buds</li>
+                    <li><i class="fas fa-apple-alt"></i> Seeds & Fruits</li>
+                    <li><i class="fas fa-tree"></i> Bark & Wood</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Favorites Header -->
+            <section class="favorites-header">
+                <div class="favorites-title">
+                    <h2><i class="fas fa-heart"></i> My Favorite Plants</h2>
+                    <p>Your collection of saved medicinal plants</p>
+                </div>
+                <div class="favorites-actions">
+                    <div class="sort-dropdown">
+                        <button class="sort-btn" id="sortBtn">
+                            <i class="fas fa-sort"></i> Sort By
+                        </button>
+                        <div class="sort-menu" id="sortMenu">
+                            <button data-sort="name-asc">
+                                <i class="fas fa-sort-alpha-down"></i> Name (A-Z)
+                            </button>
+                            <button data-sort="name-desc">
+                                <i class="fas fa-sort-alpha-up"></i> Name (Z-A)
+                            </button>
+                            <button data-sort="recent">
+                                <i class="fas fa-clock"></i> Recently Added
+                            </button>
+                            <button data-sort="oldest">
+                                <i class="fas fa-history"></i> Oldest First
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Favorites Grid -->
+            <section class="favorites-grid" id="favoritesGrid">
+                <!-- Favorite plants will be dynamically added here -->
+                <div class="empty-favorites" id="emptyFavorites">
+                    <i class="fas fa-heart-broken"></i>
+                    <h3>No Favorites Yet</h3>
+                    <p>Start adding plants to your favorites by clicking the heart icon on any plant card.</p>
+                    <a href="dashboard.html" class="browse-btn">
+                        <i class="fas fa-spa"></i> Browse Plants
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="favorites.js"></script>
+</body>
+</html>

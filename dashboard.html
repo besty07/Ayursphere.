@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AyurSphere - Virtual Garden</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <img src="images/logo-final.png" alt="AyurSphere Logo">
+            </div>
+            <h1 class="site-title">
+                AyurSphere
+            </h1>
+        </div>
+        
+        <div class="header-center">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search plants, properties, or categories...">
+            </div>
+        </div>
+        
+        <div class="header-right">
+            <div class="header-actions">
+                <a href="favorites.html" class="favorites-counter" title="View Favorites">
+                    <i class="fas fa-heart"></i>
+                    <span class="favorites-count" id="favoritesCount">0</span>
+                </a>
+                <div class="user-menu">
+                    <span class="username" id="usernameDisplay">Demo User</span>
+                    <button class="logout-btn" id="logoutBtn">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3><i class="fas fa-book"></i> My Library</h3>
+                <ul class="menu-list">
+                    <li class="active">
+                        <a href="dashboard.html" style="text-decoration: none; color: inherit;">
+                            <i class="fas fa-spa"></i> Browse All Plants
+                        </a>
+                    </li>
+                    <li>
+                        <a href="favorites.html" style="text-decoration: none; color: inherit;">
+                            <i class="fas fa-heart"></i> My Favorites
+                        </a>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i> Virtual Garden
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Categories</h3>
+                <ul class="category-list" id="categoryList">
+                    <li class="category-item active" data-category="all">
+                        <i class="fas fa-th-large"></i> All Plants
+                    </li>
+                    <li class="category-item" data-category="Immunity">
+                        <i class="fas fa-shield-alt"></i> Immunity
+                    </li>
+                    <li class="category-item" data-category="Digestive">
+                        <i class="fas fa-leaf"></i> Digestive
+                    </li>
+                    <li class="category-item" data-category="Respiratory">
+                        <i class="fas fa-lungs"></i> Respiratory
+                    </li>
+                    <li class="category-item" data-category="Brain Tonic">
+                        <i class="fas fa-brain"></i> Brain Tonic
+                    </li>
+                    <li class="category-item" data-category="Anti-inflammatory">
+                        <i class="fas fa-fire-alt"></i> Anti-inflammatory
+                    </li>
+                    <li class="category-item" data-category="Skin Care">
+                        <i class="fas fa-spa"></i> Skin Care
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Hero Banner -->
+            <section class="hero-banner">
+                <div class="hero-content">
+                    <h2>Welcome back, <span id="userGreeting">Demo User</span>!</h2>
+                    <p>Continue exploring the ancient wisdom of Ayurvedic medicine</p>
+                    <button class="add-plant-btn">
+                        <i class="fas fa-plus"></i> Add New Plant
+                    </button>
+                </div>
+            </section>
+
+            <!-- Featured Plants -->
+            <section class="featured-section">
+                <div class="section-header">
+                    <h2>Featured Medicinal Plants</h2>
+                    <p>Discover these powerful healing plants from ancient Ayurvedic traditions</p>
+                </div>
+
+                <div class="plants-grid" id="plantsContainer">
+                    <!-- Plant cards will be loaded dynamically from the database -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Add Plant Modal -->
+    <div class="modal-overlay" id="addPlantModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-seedling"></i> Add New Plant</h2>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <form id="addPlantForm">
+                <div class="form-group">
+                    <label for="plantName">Plant Name *</label>
+                    <input type="text" id="plantName" name="plantName" placeholder="e.g., Tulsi" required>
+                </div>
+                <div class="form-group">
+                    <label for="scientificName">Scientific Name *</label>
+                    <input type="text" id="scientificName" name="scientificName" placeholder="e.g., Ocimum sanctum" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category *</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select a category</option>
+                        <option value="Medicinal">Medicinal</option>
+                        <option value="Adaptogen">Adaptogen</option>
+                        <option value="Herb">Herb</option>
+                        <option value="Spice">Spice</option>
+                        <option value="Aromatic">Aromatic</option>
+                        <option value="Root">Root</option>
+                        <option value="Flower">Flower</option>
+                        <option value="Leaf">Leaf</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description *</label>
+                    <textarea id="description" name="description" rows="3" placeholder="Brief description of the plant..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="uses">Medicinal Uses *</label>
+                    <textarea id="uses" name="uses" rows="2" placeholder="e.g., Immunity, Stress relief, Digestion" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="imagePath">Image URL (optional)</label>
+                    <input type="text" id="imagePath" name="imagePath" placeholder="e.g., images/plant.jpg">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn-submit"><i class="fas fa-plus"></i> Add Plant</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
